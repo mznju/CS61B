@@ -39,7 +39,7 @@ public class NBody {
         }
         return allPlanets;*/
     }
-    public static int number(String file){
+    private static int number(String file){
         In in = new In(file);
         int num = in.readInt();
         return num;
