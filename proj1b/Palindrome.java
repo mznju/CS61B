@@ -13,6 +13,9 @@ public class Palindrome {
             return true;
         }
        while(!deque.isEmpty()){
+           if(deque.size()==1){
+               break;
+           }
            if(deque.removeFirst()!=deque.removeLast()){
                return false;
            }
@@ -22,10 +25,17 @@ public class Palindrome {
     public boolean isPalindrome(String word, CharacterComparator cc){
         Deque<Character> deque = new LinkedListDeque<>();
         deque = wordToDeque(word);
+        if(deque.isEmpty() ||deque.size()==1){
+            return true;
+        }
         while(!deque.isEmpty()){
+            if(deque.size()==1){
+                break;
+            }
             if(!cc.equalChars(deque.removeFirst(), deque.removeLast())){
                 return false;
             }
+
         }
         return true;
     }

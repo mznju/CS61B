@@ -1,108 +1,120 @@
-public class LinkedListDeque<T>implements Deque<T> {
-    private class Node{
+public class LinkedListDeque<T> implements Deque<T> {
+    private class Node {
         T item;
         Node next;
         Node prev;
-        public Node(T item){
+
+        public Node(T item) {
             this.item = item;
         }
     }
+
     Node first;
     Node last;
     int size;
-    public LinkedListDeque(){
+
+    public LinkedListDeque() {
 
 
     }
+
     @Override
-    public void addFirst(T item){
+    public void addFirst(T item) {
         Node temp = new Node(item);
-        if(last==null){
+        if (last == null) {
             last = temp;
-        }else{
+        } else {
             temp.next = first;
             first.prev = temp;
         }
         first = temp;
         size++;
     }
+
     @Override
-    public void addLast(T item){
+    public void addLast(T item) {
         Node temp = new Node(item);
-        if(first==null){
+        if (first == null) {
             first = temp;
-        }else{
+        } else {
             last.next = temp;
             temp.prev = last;
         }
         last = temp;
         size++;
     }
+
     @Override
-    public boolean isEmpty(){
-        return size==0;
+    public boolean isEmpty() {
+        return size == 0;
     }
+
     @Override
-    public int size(){
+    public int size() {
         return size;
     }
+
     @Override
-    public void printDeque(){
+    public void printDeque() {
         Node pre = first;
-        while(pre!=null){
-            System.out.println(pre.item+"->");
+        while (pre != null) {
+            System.out.println(pre.item + "->");
             pre = pre.next;
         }
     }
+
     @Override
-    public T removeFirst(){
+    public T removeFirst() {
         size--;
-        if(first ==null){
+        if (first == null) {
             return null;
         }
         T temp = first.item;
         first = first.next;
-        if(first==null){
-            last =null;
+        if (first == null) {
+            last = null;
             return temp;
         }
         first.prev = null;
 
         return temp;
     }
+
     @Override
-    public T removeLast(){
+    public T removeLast() {
         size--;
-        if(last ==null){
+        if (last == null) {
             return null;
         }
         T temp = last.item;
         last = last.prev;
-        if(last ==null){
-            first=null;
+        if (last == null) {
+            first = null;
             return temp;
         }
-        last.next=null;
+        last.next = null;
         return temp;
 
     }
+
     @Override
-    public T get(int index){
+    public T get(int index) {
         Node temp = first;
-        for(int i = 0;i<index;i++){
+        for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
         return temp.item;
     }
 
-    public T getRecursive(int index){
-        return getRecursiveHelper(index,first);
+    public T getRecursive(int index) {
+        return getRecursiveHelper(index, first);
     }
-    private T getRecursiveHelper(int index,Node f){
-        if(index == 0){
+
+    private T getRecursiveHelper(int index, Node f) {
+        if (index == 0) {
             return f.item;
-        }else{
-            return getRecursiveHelper(index-1,f.next);
+        } else {
+            return getRecursiveHelper(index - 1, f.next);
         }
     }
 
