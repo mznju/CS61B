@@ -7,9 +7,9 @@ public class LinkedListDeque<T> {
             this.item = item;
         }
     }
-    Node first;
-    Node last;
-    int size;
+    private Node first;
+    private Node last;
+    private int size;
     public LinkedListDeque(){
 
 
@@ -50,6 +50,9 @@ public class LinkedListDeque<T> {
         }
     }
     public T removeFirst(){
+        if(size==0){
+            return null;
+        }
         size--;
         if(first ==null){
             return null;
@@ -65,6 +68,9 @@ public class LinkedListDeque<T> {
         return temp;
     }
     public T removeLast(){
+        if(size==0){
+            return null;
+        }
         size--;
         if(last ==null){
             return null;
