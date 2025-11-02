@@ -11,11 +11,11 @@ public class IntList {
     /**
      * First element of list.
      */
-    public int first;
+    public  int first;
     /**
      * Remaining elements of list.
      */
-    public IntList rest;
+    public  IntList rest;
 
     /**
      * A List with first FIRST0 and rest REST0.
@@ -81,9 +81,9 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
+
         IntList ptr = A;
-        while(ptr.rest!=null){
+        while (ptr.rest != null) {
             ptr = ptr.rest;
         }
         ptr.rest = B;
