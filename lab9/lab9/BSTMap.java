@@ -212,8 +212,16 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
 
     }
     private V deleteOnlyOneSubNode(Node node){
+        if(node ==root){
+            if(root.left!=null){
+                root = root.left;
+            }else{
+                root = root.right;
+            }
+        }
         Node n = findParentNode(node.key);
         V v = node.value;
+
         if(n.key.compareTo(node.key)>0){
             n.left = node.left;
         }else{
